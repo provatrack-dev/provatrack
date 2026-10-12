@@ -186,7 +186,7 @@
 
         .filtros {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr auto;
+            grid-template-columns: 2fr 1fr auto;
             gap: 12px;
             background: #fff;
             border: 1px solid var(--borda);
@@ -472,8 +472,182 @@
             font-weight: 600
         }
 
+        .chips {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 14px;
+            flex-wrap: wrap
+        }
+
+        .chip {
+            font-size: 14px;
+            font-weight: 600;
+            padding: 9px 18px;
+            border-radius: 999px;
+            background: #fff;
+            border: 1.5px solid #d5dbe3;
+            color: var(--principal)
+        }
+
+        .chip.ativo {
+            background: var(--principal);
+            border-color: var(--principal);
+            color: #fff;
+            box-shadow: 0 3px 10px rgba(11, 37, 69, .25)
+        }
+
+        .hero {
+            border-radius: 16px;
+            padding: 28px 30px;
+            color: #fff;
+            margin-bottom: 22px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 16px;
+            flex-wrap: wrap
+        }
+
+        .hero h1 {
+            margin: 10px 0 0;
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -.7px
+        }
+
+        .hero .status {
+            background: rgba(255, 255, 255, .95)
+        }
+
+        .info4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 22px
+        }
+
+        .info {
+            background: #fff;
+            border: 1px solid var(--borda);
+            border-radius: 14px;
+            padding: 18px 20px;
+            box-shadow: 0 1px 3px rgba(16, 24, 40, .06)
+        }
+
+        .info span {
+            display: block;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--suave);
+            margin-bottom: 6px
+        }
+
+        .info b {
+            font-size: 18px;
+            color: var(--principal);
+            font-weight: 700
+        }
+
+        .tabela-wrap {
+            background: #fff;
+            border: 1px solid var(--borda);
+            border-radius: 14px;
+            box-shadow: 0 1px 3px rgba(16, 24, 40, .06);
+            overflow: hidden
+        }
+
+        .tabela-topo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 22px;
+            border-bottom: 1px solid var(--borda);
+            gap: 12px;
+            flex-wrap: wrap
+        }
+
+        .tabela-topo h2 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--principal)
+        }
+
+        .tabela-topo h2 small {
+            font-weight: 500;
+            color: var(--suave);
+            font-size: 14px;
+            margin-left: 6px
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse
+        }
+
+        th {
+            text-align: left;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--suave);
+            padding: 12px 22px;
+            background: #f8fafc
+        }
+
+        td {
+            padding: 14px 22px;
+            border-top: 1px solid var(--borda);
+            font-size: 15px
+        }
+
+        td.num2 {
+            font-weight: 700;
+            color: var(--destaque)
+        }
+
+        .pill {
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 20px;
+            background: #eef2f7;
+            color: var(--principal)
+        }
+
+        .desc {
+            background: #fff;
+            border: 1px solid var(--borda);
+            border-radius: 14px;
+            padding: 22px 24px;
+            margin-bottom: 22px;
+            box-shadow: 0 1px 3px rgba(16, 24, 40, .06);
+            color: var(--suave)
+        }
+
+        .desc h2 {
+            margin: 0 0 8px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--suave)
+        }
+
+        .desc p {
+            margin: 0;
+            color: var(--texto)
+        }
+
         @media(max-width:860px) {
             .grade {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .info4 {
                 grid-template-columns: 1fr 1fr
             }
 
@@ -529,9 +703,9 @@
             <div class="num"><b>3</b><span>Com inscrições abertas</span></div>
             <div class="num"><b>1</b><span>Em andamento</span></div>
         </div>
+        <div class="chips"><span class="chip ativo">Todas (6)</span><span class="chip">🚴 Ciclismo (3)</span><span
+                class="chip">🏃 Atletismo (3)</span></div>
         <div class="filtros"><input class="campo" placeholder="🔍  Buscar prova pelo nome"><select class="campo">
-                <option>Todas as modalidades</option>
-            </select><select class="campo">
                 <option>Todos os status</option>
             </select><button class="btn btn-secundario">Filtrar</button></div>
         <section class="grade">
