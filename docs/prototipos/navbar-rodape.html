@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ProvaTrack | Protótipo: navbar e rodapé</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --principal: #0B2545;
+            --principal-escuro: #071a31;
+            --destaque: #FF6B35;
+            --fundo: #F4F6F8;
+            --texto: #1F2933;
+            --suave: #667085;
+            --borda: #E3E8EE;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+            background: var(--fundo);
+            color: var(--texto);
+            line-height: 1.5;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: var(--principal);
+            box-shadow: 0 2px 10px rgba(11, 37, 69, 0.35);
+        }
+        .navbar-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 68px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .marca {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+            font-weight: 800;
+            font-size: 22px;
+            letter-spacing: -0.3px;
+            text-decoration: none;
+            margin-right: 36px;
+        }
+        .marca-icone {
+            width: 34px;
+            height: 34px;
+            border-radius: 9px;
+            background: var(--destaque);
+            display: grid;
+            place-items: center;
+            box-shadow: 0 3px 8px rgba(255, 107, 53, 0.45);
+        }
+        .marca-icone svg { width: 20px; height: 20px; }
+        .marca span em { color: var(--destaque); font-style: normal; }
+
+        .menu { display: flex; gap: 4px; flex: 1; }
+        .menu a {
+            color: #cfd8e6;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            padding: 9px 16px;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .menu a:hover { background: rgba(255, 255, 255, 0.1); color: #fff; }
+        .menu a.ativo {
+            background: var(--destaque);
+            color: #fff;
+            font-weight: 600;
+            box-shadow: 0 3px 10px rgba(255, 107, 53, 0.4);
+        }
+
+        .btn-login {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 9px 18px;
+            border: 1.5px solid rgba(255, 255, 255, 0.4);
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+        .btn-login:hover { background: #fff; color: var(--principal); border-color: #fff; }
+
+        /* ===== CONTEÚDO DE EXEMPLO ===== */
+        main {
+            flex: 1;
+            max-width: 1100px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 48px 24px 56px;
+        }
+        .selo {
+            display: inline-block;
+            background: rgba(255, 107, 53, 0.12);
+            color: #c24a1a;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            padding: 5px 12px;
+            border-radius: 20px;
+            margin-bottom: 14px;
+        }
+        h1 {
+            font-size: 36px;
+            font-weight: 800;
+            letter-spacing: -0.8px;
+            color: var(--principal);
+            margin: 0 0 8px;
+        }
+        .sub { color: var(--suave); font-size: 17px; margin: 0 0 36px; max-width: 640px; }
+
+        .painel {
+            background: #fff;
+            border: 1px solid var(--borda);
+            border-radius: 14px;
+            padding: 26px 28px;
+            box-shadow: 0 1px 3px rgba(16, 24, 40, 0.06);
+            margin-bottom: 22px;
+        }
+        .painel h2 {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--suave);
+            margin: 0 0 18px;
+        }
+
+        .paleta { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+        .cor { border-radius: 12px; overflow: hidden; border: 1px solid var(--borda); }
+        .cor .amostra { height: 84px; }
+        .cor .info { padding: 12px 14px; background: #fff; }
+        .cor .nome { font-weight: 700; font-size: 14px; }
+        .cor .hex { font-size: 13px; color: var(--suave); font-family: Consolas, 'Courier New', monospace; }
+        .cor .uso { font-size: 12px; color: var(--suave); margin-top: 2px; }
+
+        .tipografia { display: grid; grid-template-columns: 1.1fr 1fr; gap: 28px; align-items: center; }
+        .aa { font-size: 84px; font-weight: 800; color: var(--principal); letter-spacing: -3px; line-height: 1; }
+        .aa small { font-size: 22px; font-weight: 500; color: var(--suave); letter-spacing: 0; margin-left: 10px; }
+        .pesos p { margin: 4px 0; font-size: 18px; }
+        .pesos .p400 { font-weight: 400; }
+        .pesos .p600 { font-weight: 600; }
+        .pesos .p800 { font-weight: 800; }
+        .pesos .rotulo { font-size: 12px; color: var(--suave); font-weight: 500; margin-left: 8px; }
+
+        .componentes { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+        .btn {
+            font-family: inherit;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 11px 22px;
+            border-radius: 9px;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        .btn-primario { background: var(--destaque); color: #fff; box-shadow: 0 3px 10px rgba(255, 107, 53, 0.35); }
+        .btn-secundario { background: transparent; color: var(--principal); border-color: var(--principal); }
+
+        /* ===== RODAPÉ ===== */
+        .rodape { background: var(--principal); color: #cfd8e6; margin-top: auto; }
+        .rodape-topo {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 24px 28px;
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr;
+            gap: 32px;
+        }
+        .rodape .marca { margin-right: 0; font-size: 20px; }
+        .rodape p { margin: 12px 0 0; font-size: 14px; color: #9fb0c7; max-width: 320px; }
+        .rodape h3 {
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin: 0 0 14px;
+        }
+        .rodape ul { list-style: none; margin: 0; padding: 0; }
+        .rodape li { margin-bottom: 8px; }
+        .rodape li a { color: #cfd8e6; text-decoration: none; font-size: 14px; }
+        .rodape li a:hover { color: var(--destaque); }
+        .rodape-base {
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            text-align: center;
+            padding: 18px 24px;
+            font-size: 13px;
+            color: #8ea1bb;
+        }
+        .rodape-base b { color: var(--destaque); font-weight: 600; }
+
+        @media (max-width: 760px) {
+            .menu { display: none; }
+            .paleta { grid-template-columns: repeat(2, 1fr); }
+            .tipografia, .rodape-topo { grid-template-columns: 1fr; }
+            .navbar-inner { justify-content: space-between; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <header class="navbar">
+        <div class="navbar-inner">
+            <a class="marca" href="#">
+                <span class="marca-icone">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 17l5-6 4 3 5-8 4 5"/>
+                        <path d="M3 21h18"/>
+                    </svg>
+                </span>
+                <span>Prova<em>Track</em></span>
+            </a>
+            <nav class="menu">
+                <a href="#" class="ativo">Início</a>
+                <a href="#">Atletas</a>
+                <a href="#">Equipes</a>
+                <a href="#">Provas</a>
+                <a href="#">Resultados</a>
+            </nav>
+            <a class="btn-login" href="#">Entrar</a>
+        </div>
+    </header>
+
+    <!-- ===== CONTEÚDO DE EXEMPLO (identidade visual) ===== -->
+    <main>
+        <span class="selo">Layout base · Sprint 1</span>
+        <h1>Identidade visual do ProvaTrack</h1>
+        <p class="sub">Paleta, tipografia e componentes que serão reutilizados em todas as telas do sistema de gerenciamento de provas de ciclismo e atletismo.</p>
+
+        <section class="painel">
+            <h2>Paleta de cores</h2>
+            <div class="paleta">
+                <div class="cor">
+                    <div class="amostra" style="background:#0B2545"></div>
+                    <div class="info"><div class="nome">Principal</div><div class="hex">#0B2545</div><div class="uso">Navbar, rodapé e títulos</div></div>
+                </div>
+                <div class="cor">
+                    <div class="amostra" style="background:#FF6B35"></div>
+                    <div class="info"><div class="nome">Destaque</div><div class="hex">#FF6B35</div><div class="uso">Botões e link ativo</div></div>
+                </div>
+                <div class="cor">
+                    <div class="amostra" style="background:#F4F6F8"></div>
+                    <div class="info"><div class="nome">Fundo</div><div class="hex">#F4F6F8</div><div class="uso">Fundo das páginas</div></div>
+                </div>
+                <div class="cor">
+                    <div class="amostra" style="background:#1F2933"></div>
+                    <div class="info"><div class="nome">Texto</div><div class="hex">#1F2933</div><div class="uso">Corpo do texto</div></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="painel">
+            <h2>Fonte escolhida</h2>
+            <div class="tipografia">
+                <div class="aa">Aa<small>Inter</small></div>
+                <div class="pesos">
+                    <p class="p800">Títulos em extra-negrito<span class="rotulo">800</span></p>
+                    <p class="p600">Subtítulos e botões<span class="rotulo">600</span></p>
+                    <p class="p400">Texto corrido e formulários<span class="rotulo">400</span></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="painel">
+            <h2>Botões</h2>
+            <div class="componentes">
+                <button class="btn btn-primario">Cadastrar atleta</button>
+                <button class="btn btn-secundario">Ver provas</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== RODAPÉ ===== -->
+    <footer class="rodape">
+        <div class="rodape-topo">
+            <div>
+                <a class="marca" href="#">
+                    <span class="marca-icone">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 17l5-6 4 3 5-8 4 5"/>
+                            <path d="M3 21h18"/>
+                        </svg>
+                    </span>
+                    <span>Prova<em>Track</em></span>
+                </a>
+                <p>Gerenciamento de provas de ciclismo e atletismo: atletas, equipes, provas e resultados em um só lugar.</p>
+            </div>
+            <div>
+                <h3>Navegação</h3>
+                <ul>
+                    <li><a href="#">Início</a></li>
+                    <li><a href="#">Atletas</a></li>
+                    <li><a href="#">Equipes</a></li>
+                    <li><a href="#">Provas</a></li>
+                    <li><a href="#">Resultados</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Projeto</h3>
+                <ul>
+                    <li><a href="#">Desenvolvimento de Sistemas Web</a></li>
+                    <li><a href="#">IFRN · Campus Pau dos Ferros</a></li>
+                    <li><a href="#">Repositório no GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="rodape-base">
+            © 2026 <b>ProvaTrack</b> · Projeto de Desenvolvimento de Sistemas Web · IFRN
+        </div>
+    </footer>
+
+</body>
+</html>
