@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ProvaTrack | Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+:root{--principal:#0B2545;--destaque:#FF6B35;--fundo:#F4F6F8;--texto:#1F2933;--suave:#667085;--borda:#E3E8EE}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:flex;flex-direction:column;font-family:'Inter','Segoe UI',Arial,sans-serif;background:var(--fundo);color:var(--texto);line-height:1.5}
+.navbar{position:sticky;top:0;z-index:10;background:var(--principal);box-shadow:0 2px 10px rgba(11,37,69,.35)}
+.navbar-inner{max-width:1100px;margin:0 auto;padding:0 24px;height:68px;display:flex;align-items:center;gap:8px}
+.marca{display:flex;align-items:center;gap:10px;color:#fff;font-weight:800;font-size:22px;letter-spacing:-.3px;text-decoration:none;margin-right:36px}
+.marca-icone{width:34px;height:34px;border-radius:9px;background:var(--destaque);display:grid;place-items:center;box-shadow:0 3px 8px rgba(255,107,53,.45)}
+.marca-icone svg{width:20px;height:20px}
+.marca span em{color:var(--destaque);font-style:normal}
+.menu{display:flex;gap:4px;flex:1}
+.menu a{color:#cfd8e6;text-decoration:none;font-weight:500;font-size:15px;padding:9px 16px;border-radius:8px;transition:background .2s,color .2s}
+.menu a:hover{background:rgba(255,255,255,.1);color:#fff}
+.menu a.ativo{background:var(--destaque);color:#fff;font-weight:600;box-shadow:0 3px 10px rgba(255,107,53,.4)}
+.btn-login{color:#fff;text-decoration:none;font-weight:600;font-size:14px;padding:9px 18px;border:1.5px solid rgba(255,255,255,.4);border-radius:8px;transition:all .2s}
+.btn-login:hover,.btn-login.ativo{background:#fff;color:var(--principal);border-color:#fff}
+main{flex:1;max-width:1100px;width:100%;margin:0 auto;padding:48px 24px 56px}
+h1{font-size:36px;font-weight:800;letter-spacing:-.8px;color:var(--principal);margin:0 0 8px}
+.sub{color:var(--suave);font-size:17px;margin:0 0 32px;max-width:640px}
+.selo{display:inline-block;background:rgba(255,107,53,.12);color:#c24a1a;font-size:12px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;padding:5px 12px;border-radius:20px;margin-bottom:14px}
+.painel{background:#fff;border:1px solid var(--borda);border-radius:14px;padding:26px 28px;box-shadow:0 1px 3px rgba(16,24,40,.06)}
+.painel h2{font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--suave);margin:0 0 18px}
+.btn{font-family:inherit;font-size:15px;font-weight:600;padding:11px 22px;border-radius:9px;cursor:pointer;border:2px solid transparent;text-decoration:none;display:inline-block;text-align:center}
+.btn-primario{background:var(--destaque);color:#fff;box-shadow:0 3px 10px rgba(255,107,53,.35)}
+.btn-secundario{background:transparent;color:var(--principal);border-color:var(--principal)}
+.rodape{background:var(--principal);color:#cfd8e6;margin-top:auto}
+.rodape-topo{max-width:1100px;margin:0 auto;padding:40px 24px 28px;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px}
+.rodape .marca{margin-right:0;font-size:20px}
+.rodape p{margin:12px 0 0;font-size:14px;color:#9fb0c7;max-width:320px}
+.rodape h3{color:#fff;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin:0 0 14px}
+.rodape ul{list-style:none;margin:0;padding:0}
+.rodape li{margin-bottom:8px}
+.rodape li a{color:#cfd8e6;text-decoration:none;font-size:14px}
+.rodape li a:hover{color:var(--destaque)}
+.rodape-base{border-top:1px solid rgba(255,255,255,.12);text-align:center;padding:18px 24px;font-size:13px;color:#8ea1bb}
+.rodape-base b{color:var(--destaque);font-weight:600}
+@media(max-width:760px){.menu{display:none}.navbar-inner{justify-content:space-between}.rodape-topo{grid-template-columns:1fr}}
+
+.login-main{display:grid;place-items:center;padding:64px 24px}
+.login-box{width:100%;max-width:440px}
+.login-topo{text-align:center;margin-bottom:24px}
+.login-topo .marca-icone{width:52px;height:52px;border-radius:14px;margin:0 auto 16px}
+.login-topo .marca-icone svg{width:30px;height:30px}
+.login-topo h1{font-size:30px}
+.login-topo p{color:var(--suave);margin:0;font-size:15px}
+.painel.login{padding:32px}
+.campo{margin-bottom:18px}
+.campo label{display:block;font-size:14px;font-weight:600;margin-bottom:6px}
+.campo input{width:100%;font-family:inherit;font-size:15px;padding:12px 14px;border:1.5px solid var(--borda);border-radius:9px;background:#fff;color:var(--texto)}
+.campo input::placeholder{color:#98a2b3}
+.campo input:focus{outline:none;border-color:var(--destaque);box-shadow:0 0 0 3px rgba(255,107,53,.18)}
+.linha{display:flex;justify-content:space-between;align-items:center;margin:-4px 0 22px;font-size:14px}
+.linha label{display:flex;align-items:center;gap:8px;color:var(--suave)}
+.linha input{accent-color:var(--destaque);width:16px;height:16px}
+.linha a{color:var(--destaque);font-weight:600;text-decoration:none}
+.btn-cheio{width:100%;padding:13px 22px}
+.cadastro{text-align:center;margin:20px 0 0;font-size:14px;color:var(--suave)}
+.cadastro a{color:var(--principal);font-weight:600}
+</style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="navbar-inner">
+            <a class="marca" href="home.html"><span class="marca-icone"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-6 4 3 5-8 4 5"/><path d="M3 21h18"/></svg></span><span>Prova<em>Track</em></span></a>
+            <nav class="menu">
+                <a href="home.html">Início</a>
+                <a href="#">Atletas</a>
+                <a href="#">Equipes</a>
+                <a href="#">Provas</a>
+                <a href="#">Resultados</a>
+            </nav>
+            <a class="btn-login ativo" href="login.html">Entrar</a>
+        </div>
+    </header>
+
+    <main class="login-main">
+        <div class="login-box">
+            <div class="login-topo">
+                <span class="marca-icone"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-6 4 3 5-8 4 5"/><path d="M3 21h18"/></svg></span>
+                <h1>Entrar no ProvaTrack</h1>
+                <p>Acesse para gerenciar provas, atletas e resultados.</p>
+            </div>
+            <form class="painel login" action="#" method="post">
+                <div class="campo">
+                    <label for="usuario">Usuário</label>
+                    <input id="usuario" type="text" placeholder="Digite seu usuário">
+                </div>
+                <div class="campo">
+                    <label for="senha">Senha</label>
+                    <input id="senha" type="password" placeholder="Digite sua senha">
+                </div>
+                <div class="linha">
+                    <label><input type="checkbox"> Lembrar de mim</label>
+                    <a href="#">Esqueci minha senha</a>
+                </div>
+                <button class="btn btn-primario btn-cheio" type="submit">Entrar</button>
+            </form>
+            <p class="cadastro">Ainda não tem conta? <a href="#">Fale com o administrador</a></p>
+        </div>
+    </main>
+
+    <footer class="rodape">
+        <div class="rodape-topo">
+            <div>
+                <a class="marca" href="home.html"><span class="marca-icone"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-6 4 3 5-8 4 5"/><path d="M3 21h18"/></svg></span><span>Prova<em>Track</em></span></a>
+                <p>Gerenciamento de provas de ciclismo e atletismo: atletas, equipes, provas e resultados em um só lugar.</p>
+            </div>
+            <div>
+                <h3>Navegação</h3>
+                <ul><li><a href="home.html">Início</a></li><li><a href="#">Atletas</a></li><li><a href="#">Equipes</a></li><li><a href="#">Provas</a></li><li><a href="#">Resultados</a></li></ul>
+            </div>
+            <div>
+                <h3>Projeto</h3>
+                <ul><li><a href="#">Desenvolvimento de Sistemas Web</a></li><li><a href="#">IFRN · Campus Pau dos Ferros</a></li><li><a href="#">Repositório no GitHub</a></li></ul>
+            </div>
+        </div>
+        <div class="rodape-base">© 2026 <b>ProvaTrack</b> · Projeto de Desenvolvimento de Sistemas Web · IFRN</div>
+    </footer>
+</body>
+</html>
