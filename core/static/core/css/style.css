@@ -1,0 +1,291 @@
+/* ===== ProvaTrack: estilos globais =====
+   Copiado do protótipo (docs/prototipos/home.html): cores, navbar, rodapé e botões. */
+
+:root {
+  --principal: #0B2545;
+  --destaque: #FF6B35;
+  --fundo: #F4F6F8;
+  --texto: #1F2933;
+  --suave: #667085;
+  --borda: #E3E8EE;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter','Segoe UI',Arial,sans-serif;
+  background: var(--fundo);
+  color: var(--texto);
+  line-height: 1.5;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--principal);
+  box-shadow: 0 2px 10px rgba(11,37,69,.35);
+}
+
+.navbar-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  font-weight: 800;
+  font-size: 22px;
+  letter-spacing: -.3px;
+  text-decoration: none;
+  margin-right: 36px;
+}
+
+.marca-icone {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: var(--destaque);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 3px 8px rgba(255,107,53,.45);
+}
+
+.marca-icone svg {
+  width: 20px;
+  height: 20px;
+}
+
+.marca span em {
+  color: var(--destaque);
+  font-style: normal;
+}
+
+.menu {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+}
+
+.menu a {
+  color: #cfd8e6;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  padding: 9px 16px;
+  border-radius: 8px;
+  transition: background .2s,color .2s;
+}
+
+.menu a:hover {
+  background: rgba(255,255,255,.1);
+  color: #fff;
+}
+
+.menu a.ativo {
+  background: var(--destaque);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 3px 10px rgba(255,107,53,.4);
+}
+
+.btn-login {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 9px 18px;
+  border: 1.5px solid rgba(255,255,255,.4);
+  border-radius: 8px;
+  transition: all .2s;
+}
+
+.btn-login:hover, .btn-login.ativo {
+  background: #fff;
+  color: var(--principal);
+  border-color: #fff;
+}
+
+main {
+  flex: 1;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 48px 24px 56px;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: -.8px;
+  color: var(--principal);
+  margin: 0 0 8px;
+}
+
+.sub {
+  color: var(--suave);
+  font-size: 17px;
+  margin: 0 0 32px;
+  max-width: 640px;
+}
+
+.selo {
+  display: inline-block;
+  background: rgba(255,107,53,.12);
+  color: #c24a1a;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+}
+
+.painel {
+  background: #fff;
+  border: 1px solid var(--borda);
+  border-radius: 14px;
+  padding: 26px 28px;
+  box-shadow: 0 1px 3px rgba(16,24,40,.06);
+}
+
+.painel h2 {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--suave);
+  margin: 0 0 18px;
+}
+
+.btn {
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 11px 22px;
+  border-radius: 9px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-primario {
+  background: var(--destaque);
+  color: #fff;
+  box-shadow: 0 3px 10px rgba(255,107,53,.35);
+}
+
+.btn-secundario {
+  background: transparent;
+  color: var(--principal);
+  border-color: var(--principal);
+}
+
+.rodape {
+  background: var(--principal);
+  color: #cfd8e6;
+  margin-top: auto;
+}
+
+.rodape-topo {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 24px 28px;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 32px;
+}
+
+.rodape .marca {
+  margin-right: 0;
+  font-size: 20px;
+}
+
+.rodape p {
+  margin: 12px 0 0;
+  font-size: 14px;
+  color: #9fb0c7;
+  max-width: 320px;
+}
+
+.rodape h3 {
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin: 0 0 14px;
+}
+
+.rodape ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.rodape li {
+  margin-bottom: 8px;
+}
+
+.rodape li a {
+  color: #cfd8e6;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.rodape li a:hover {
+  color: var(--destaque);
+}
+
+.rodape-base {
+  border-top: 1px solid rgba(255,255,255,.12);
+  text-align: center;
+  padding: 18px 24px;
+  font-size: 13px;
+  color: #8ea1bb;
+}
+
+.rodape-base b {
+  color: var(--destaque);
+  font-weight: 600;
+}
+
+@media (max-width:760px) {
+  .menu {
+    display: none;
+  }
+  .navbar-inner {
+    justify-content: space-between;
+  }
+  .rodape-topo {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mensagens de feedback (não existe nos protótipos; usado pelo fragment mensagens.html) */
+.mensagens { list-style: none; padding: 0; margin: 0 0 20px; }
+.mensagens li {
+  background: #d9f5e3;
+  color: #14703a;
+  border-left: 4px solid #14703a;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}

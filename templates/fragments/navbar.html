@@ -1,0 +1,26 @@
+<header class="navbar">
+    <div class="navbar-inner">
+        <a class="marca" href="{% url 'home' %}">
+            <span class="marca-icone">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M3 17l5-6 4 3 5-8 4 5" />
+                    <path d="M3 21h18" />
+                </svg>
+            </span>
+            <span>Prova<em>Track</em></span>
+        </a>
+
+        <nav class="menu">
+            {# Os links com "#" passam a usar {% url %} quando cada tela for criada #}
+            <a href="{% url 'home' %}"
+                class="{% if request.resolver_match.url_name == 'home' %}ativo{% endif %}">Início</a>
+            <a href="#">Atletas</a>
+            <a href="#">Equipes</a>
+            <a href="#">Provas</a>
+            <a href="#">Resultados</a>
+        </nav>
+
+        <a class="btn-login" href="#">Entrar</a>
+    </div>
+</header>
