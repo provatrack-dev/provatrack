@@ -34,6 +34,56 @@ Organizar uma prova esportiva costuma envolver planilhas e mensagens soltas: que
 
 Relacionamentos: uma equipe tem vários atletas, e um atleta tem vários resultados. Uma prova gera vários resultados, um por atleta. Detalhes e diagrama em [docs/entidades.md](docs/entidades.md).
 
+## Protótipos
+
+Telas prototipadas do sistema, todas no mesmo layout base (paleta, fonte Inter, navbar e rodapé, descritos em [docs/layout-base.md](docs/layout-base.md)). As imagens e o código HTML de cada tela ficam em [docs/prototipos/](docs/prototipos/).
+
+### Layout base
+
+![Navbar e rodapé](docs/prototipos/navbar-rodape.png)
+
+Código: [navbar-rodape.html](docs/prototipos/navbar-rodape.html)
+
+### Login e início
+
+![Login](docs/prototipos/login.png)
+
+![Início](docs/prototipos/home.png)
+
+Código: [login.html](docs/prototipos/login.html) · [home.html](docs/prototipos/home.html)
+
+### Atletas e equipes
+
+![Lista de atletas](docs/prototipos/atletas-lista.png)
+
+![Cadastro de atleta](docs/prototipos/atletas-formulario.png)
+
+![Lista de equipes](docs/prototipos/equipes-lista.png)
+
+![Cadastro de equipe](docs/prototipos/equipes-formulario.png)
+
+Código: [atletas-lista.html](docs/prototipos/atletas-lista.html) · [atletas-formulario.html](docs/prototipos/atletas-formulario.html) · [equipes-lista.html](docs/prototipos/equipes-lista.html) · [equipes-formulario.html](docs/prototipos/equipes-formulario.html)
+
+### Provas
+
+![Lista de provas](docs/prototipos/provas-lista.png)
+
+![Detalhe da prova](docs/prototipos/provas-detalhe.png)
+
+![Cadastro de prova](docs/prototipos/provas-formulario.png)
+
+Código: [provas-lista.html](docs/prototipos/provas-lista.html) · [provas-detalhe.html](docs/prototipos/provas-detalhe.html) · [provas-formulario.html](docs/prototipos/provas-formulario.html)
+
+### Resultados e ranking
+
+![Resultados por prova](docs/prototipos/resultados-lista.png)
+
+![Ranking geral](docs/prototipos/ranking-geral.png)
+
+![Lançar resultado](docs/prototipos/resultados-formulario.png)
+
+Código: [resultados-lista.html](docs/prototipos/resultados-lista.html) · [ranking-geral.html](docs/prototipos/ranking-geral.html) · [resultados-formulario.html](docs/prototipos/resultados-formulario.html)
+
 ## Tecnologias
 
 - Python e Django
@@ -43,7 +93,7 @@ Relacionamentos: uma equipe tem vários atletas, e um atleta tem vários resulta
 ## Equipe
 
 - Samuel Oliveira
-- [NOME COMPLETO DO VITOR]
+- Victor Gabriel 
 
 ## Como executar
 
