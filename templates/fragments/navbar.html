@@ -1,26 +1,25 @@
+{% with rota=request.resolver_match.url_name %}
 <header class="navbar">
     <div class="navbar-inner">
         <a class="marca" href="{% url 'home' %}">
             <span class="marca-icone">
-                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M3 17l5-6 4 3 5-8 4 5" />
-                    <path d="M3 21h18" />
+                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 17l5-6 4 3 5-8 4 5"/>
+                    <path d="M3 21h18"/>
                 </svg>
             </span>
             <span>Prova<em>Track</em></span>
         </a>
 
         <nav class="menu">
-            {# Os links com "#" passam a usar {% url %} quando cada tela for criada #}
-            <a href="{% url 'home' %}"
-                class="{% if request.resolver_match.url_name == 'home' %}ativo{% endif %}">Início</a>
-            <a href="#">Atletas</a>
-            <a href="#">Equipes</a>
-            <a href="#">Provas</a>
-            <a href="#">Resultados</a>
+            <a href="{% url 'home' %}" class="{% if rota == 'home' %}ativo{% endif %}">Início</a>
+            <a href="{% url 'atleta_lista' %}" class="{% if rota == 'atleta_lista' or rota == 'atleta_form' %}ativo{% endif %}">Atletas</a>
+            <a href="{% url 'equipe_lista' %}" class="{% if rota == 'equipe_lista' or rota == 'equipe_form' %}ativo{% endif %}">Equipes</a>
+            <a href="{% url 'prova_lista' %}" class="{% if rota == 'prova_lista' or rota == 'prova_form' or rota == 'prova_detalhe' %}ativo{% endif %}">Provas</a>
+            <a href="{% url 'resultado_lista' %}" class="{% if rota == 'resultado_lista' or rota == 'resultado_form' or rota == 'ranking_geral' %}ativo{% endif %}">Resultados</a>
         </nav>
 
-        <a class="btn-login" href="#">Entrar</a>
+        <a class="btn-login{% if rota == 'login' %} ativo{% endif %}" href="{% url 'login' %}">Entrar</a>
     </div>
 </header>
+{% endwith %}

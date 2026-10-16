@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ titulo }}{% endblock %}
+
+{% block content %}
+    <span class="selo">Em construção</span>
+    <h1>{{ titulo }}</h1>
+    <p class="sub">Esta tela ainda será implementada conforme o protótipo.</p>
+    <a class="btn btn-primario" href="{% url 'home' %}">Voltar ao início</a>
+{% endblock %}
