@@ -15,8 +15,8 @@
             <p class="sub">Acompanhe as próximas provas de ciclismo e atletismo, os atletas e o ranking geral.</p>
         </div>
         <div class="acoes">
-            <a class="btn btn-primario" href="#">Ver provas</a>
-            <a class="btn btn-secundario" href="#">Ver ranking</a>
+            <a class="btn btn-primario" href="{% url 'prova_lista' %}">Ver provas</a>
+            <a class="btn btn-secundario" href="{% url 'ranking_geral' %}">Ver ranking</a>
         </div>
     </div>
 
@@ -28,7 +28,7 @@
 
     <div class="grade">
         <section class="painel">
-            <div class="painel-topo"><h2>Próximas provas</h2><a href="#">Ver todas</a></div>
+            <div class="painel-topo"><h2>Próximas provas</h2><a href="{% url 'prova_lista' %}">Ver todas</a></div>
                 <div class="prova">
                     <div class="data"><b>08</b><small>NOV</small></div>
                     <div class="info"><div class="nome">Volta Ciclística de Pau dos Ferros</div><div class="meta">Pau dos Ferros/RN · 85 km</div></div>
@@ -52,7 +52,7 @@
         </section>
 
         <section class="painel">
-            <div class="painel-topo"><h2>Top 3 do ranking</h2><a href="#">Ranking completo</a></div>
+            <div class="painel-topo"><h2>Top 3 do ranking</h2><a href="{% url 'ranking_geral' %}">Ranking completo</a></div>
                 <div class="rank">
                     <div class="pos">1</div>
                     <div class="info"><div class="nome">Lucas Medeiros</div><div class="meta">Equipe Serra Pedal · Ciclismo</div></div>

@@ -1,4 +1,36 @@
 <footer class="rodape">
+    <div class="rodape-topo">
+        <div>
+            <a class="marca" href="{% url 'home' %}">
+                <span class="marca-icone">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 17l5-6 4 3 5-8 4 5"/>
+                        <path d="M3 21h18"/>
+                    </svg>
+                </span>
+                <span>Prova<em>Track</em></span>
+            </a>
+            <p>Gerenciamento de provas de ciclismo e atletismo: atletas, equipes, provas e resultados em um só lugar.</p>
+        </div>
+        <div>
+            <h3>Navegação</h3>
+            <ul>
+                <li><a href="{% url 'home' %}">Início</a></li>
+                <li><a href="{% url 'atleta_lista' %}">Atletas</a></li>
+                <li><a href="{% url 'equipe_lista' %}">Equipes</a></li>
+                <li><a href="{% url 'prova_lista' %}">Provas</a></li>
+                <li><a href="{% url 'resultado_lista' %}">Resultados</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3>Projeto</h3>
+            <ul>
+                <li><a href="#">Desenvolvimento de Sistemas Web</a></li>
+                <li><a href="#">IFRN · Campus Pau dos Ferros</a></li>
+                <li><a href="https://github.com/provatrack-dev/provatrack" target="_blank" rel="noopener">Repositório no GitHub</a></li>
+            </ul>
+        </div>
+    </div>
     <div class="rodape-base">
         © 2026 <b>ProvaTrack</b> · Projeto de Desenvolvimento de Sistemas Web · IFRN
     </div>
