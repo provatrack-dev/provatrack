@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Lançar resultado{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'core/css/resultados.css' %}">
+{% endblock %}
+
+{% block content %}
+        <div class="form-box">
+            <div class="crumb"><a href="{% url 'resultado_lista' %}">Resultados</a> › <b>Lançar resultado</b></div>
+            <h1>Lançar resultado</h1>
+            <p class="sub">Registre a posição, o tempo e os pontos de um atleta em uma prova.</p>
+            <div class="aviso">Um atleta só pode ter <b>um resultado por prova</b>.</div>
+            <form class="painel" method="post">
+                {% csrf_token %}
+                <div class="grid2">
+                    <div class="campo cheio"><label>Prova <i>*</i></label><select><option>Selecione a prova</option>{% for nome in provas_opcoes %}<option>{{ nome }}</option>{% endfor %}</select></div>
+                    <div class="campo cheio"><label>Atleta <i>*</i></label><select><option>Selecione o atleta</option>{% for nome in atletas_opcoes %}<option>{{ nome }}</option>{% endfor %}</select></div>
+                    <div class="campo"><label>Posição</label><input type="text" placeholder="Ex.: 1"><small>Colocação final na prova.</small></div>
+                    <div class="campo"><label>Tempo</label><input type="text" placeholder="hh:mm:ss"><small>Ex.: 01:32:15</small></div>
+                    <div class="campo"><label>Pontos</label><input type="text" placeholder="Ex.: 100"><small>Usados no ranking geral.</small></div>
+                </div>
+                <div class="botoes">
+                    <button class="btn btn-primario" type="submit">Salvar resultado</button>
+                    <a class="btn btn-secundario" href="{% url 'resultado_lista' %}">Cancelar</a>
+                </div>
+            </form>
+        </div>
+{% endblock %}

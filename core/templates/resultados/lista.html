@@ -1,0 +1,52 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Resultados{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'core/css/resultados.css' %}">
+{% endblock %}
+
+{% block content %}
+        <div class="topo">
+            <div>
+                <h1>Resultados</h1>
+                <p class="sub">Classificação final de cada prova, com posição, tempo e pontos de cada atleta.</p>
+            </div>
+            <a class="btn btn-primario" href="{% url 'resultado_form' %}">+ Lançar resultado</a>
+        </div>
+        <div class="tabs"><a href="{% url 'resultado_lista' %}" class="on">Resultados por prova</a><a href="{% url 'ranking_geral' %}">Ranking geral</a></div>
+        <div class="provabox">
+            <select>{% for nome in provas_opcoes %}<option>{{ nome }}</option>{% endfor %}</select>
+            <div class="chips">
+                <span class="chip on">{{ prova.modalidade }}</span>
+                <span class="chip">{{ prova.data }}</span>
+                <span class="chip">{{ prova.local }}</span>
+                <span class="chip">{{ prova.distancia }}</span>
+                <span class="chip enc">{{ prova.status }}</span>
+            </div>
+        </div>
+        <div class="kpis">
+            <div class="kpi"><small>Participantes</small><b>{{ participantes }} atletas</b></div>
+            <div class="kpi"><small>Vencedora</small><b>{{ vencedor }}</b></div>
+            <div class="kpi"><small>Melhor tempo</small><b>{{ melhor_tempo }}</b></div>
+        </div>
+        <section class="painel">
+            <table>
+                <thead><tr><th>Pos.</th><th>Atleta</th><th>Equipe</th><th>Tempo</th><th>Pontos</th><th>Ações</th></tr></thead>
+                <tbody>
+                    {% for r in resultados %}
+                    <tr{% if r.pos <= 3 %} class="top"{% endif %}>
+                        <td><div class="pos{% if r.pos <= 3 %} p{{ r.pos }}{% endif %}">{{ r.pos }}</div></td>
+                        <td><div class="pessoa"><div class="av">{{ r.iniciais }}</div><b>{{ r.nome }}</b></div></td>
+                        <td>{% if r.equipe %}{{ r.equipe }}{% else %}<span class="tag avulso">Avulso</span>{% endif %}</td>
+                        <td class="tempo">{{ r.tempo }}</td>
+                        <td class="pts">{{ r.pontos }}</td>
+                        <td><div class="acoes-linha"><a class="mini" href="{% url 'resultado_form' %}">Editar</a><a class="mini perigo" href="#">Excluir</a></div></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+{% endblock %}
