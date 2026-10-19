@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Provas{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'core/css/provas.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="crumb">Início › <b>Provas</b></div>
+<div class="cabeca">
+    <div>
+        <h1>Provas</h1>
+        <p>Acompanhe as provas de ciclismo e atletismo cadastradas.</p>
+    </div>
+    <a class="btn btn-primario" href="{% url 'prova_form' %}">+ Nova prova</a>
+</div>
+<div class="resumo">
+    <div class="num"><b>{{ total }}</b><span>Provas cadastradas</span></div>
+    <div class="num"><b>{{ abertas }}</b><span>Com inscrições abertas</span></div>
+    <div class="num"><b>{{ andamento }}</b><span>Em andamento</span></div>
+</div>
+
+<div class="chips">
+    <span class="chip ativo">Todas ({{ total }})</span>
+    <span class="chip">🚴 Ciclismo ({{ ciclismo }})</span>
+    <span class="chip">🏃 Atletismo ({{ atletismo }})</span>
+</div>
+<div class="filtros"><input class="campo" placeholder="🔍  Buscar prova pelo nome"><select class="campo">
+        <option>Todos os status</option>
+    </select><button class="btn btn-secundario">Filtrar</button></div>
+<section class="grade">
+    {% for prova in provas %}
+    <article class="card">
+        <div class="topo t-{{ prova.modalidade }}"><span class="tag">{{ prova.modalidade_nome }}</span></div>
+        <div class="corpo">
+            <h3>{{ prova.nome }}</h3>
+            <div class="dado">📅 <b>{{ prova.data }}</b></div>
+            <div class="dado">📍 <b>{{ prova.local }}</b></div>
+            <div class="dado">🛣️ <b>{{ prova.distancia }}</b></div>
+        </div>
+        <div class="rodape-card"><span class="status s-{{ prova.status }}">{{ prova.status_nome }}</span><a class="link"
+                href="{% url 'prova_detalhe' prova.id %}">Ver detalhes →</a></div>
+    </article>
+    {% endfor %}
+</section>
+{% endblock %}

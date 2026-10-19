@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ prova.nome }}{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'core/css/provas.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="crumb">Início › Provas › <b>{{ prova.nome }}</b></div>
+<section class="hero t-{{ prova.modalidade }}">
+    <div><span class="tag">{{ prova.modalidade_nome }}</span>
+        <h1>{{ prova.nome }}</h1>
+    </div>
+    <span class="status s-{{ prova.status }}">{{ prova.status_nome }}</span>
+</section>
+<div class="info4">
+    <div class="info"><span>📅 Data</span><b>{{ prova.data }}</b></div>
+    <div class="info"><span>📍 Local</span><b>{{ prova.local }}</b></div>
+    <div class="info"><span>🛣️ Distância</span><b>{{ prova.distancia }}</b></div>
+    <div class="info"><span>👥 Inscritos</span><b>{{ prova.inscritos }} atletas</b></div>
+</div>
+<section class="desc">
+    <h2>Sobre a prova</h2>
+    <p>{{ prova.descricao }}</p>
+</section>
+{# Tabela de exemplo: igual para todas as provas até existir o model de inscrição #}
+<section class="tabela-wrap">
+    <div class="tabela-topo">
+        <h2>Atletas inscritos<small>6 de {{ prova.inscritos }}</small></h2><a class="btn btn-primario" href="#">+
+            Inscrever
+            atleta</a>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Nº</th>
+                <th>Atleta</th>
+                <th>Equipe</th>
+                <th>Categoria</th>
+                <th>Inscrição</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class='num2'>101</td>
+                <td><b>Marcos Vinícius Lopes</b></td>
+                <td>Pedal Alto Oeste</td>
+                <td><span class='pill'>Elite masculino</span></td>
+                <td>02/10/2026</td>
+            </tr>
+            <tr>
+                <td class='num2'>102</td>
+                <td><b>Ana Beatriz Medeiros</b></td>
+                <td>Seridó Bike Team</td>
+                <td><span class='pill'>Elite feminino</span></td>
+                <td>03/10/2026</td>
+            </tr>
+            <tr>
+                <td class='num2'>103</td>
+                <td><b>Carlos Eduardo Pinto</b></td>
+                <td>Pedal Alto Oeste</td>
+                <td><span class='pill'>Master 35+</span></td>
+                <td>03/10/2026</td>
+            </tr>
+            <tr>
+                <td class='num2'>104</td>
+                <td><b>Juliana Ferreira</b></td>
+                <td>Clube Ciclista Caicó</td>
+                <td><span class='pill'>Elite feminino</span></td>
+                <td>05/10/2026</td>
+            </tr>
+            <tr>
+                <td class='num2'>105</td>
+                <td><b>Rafael Gomes da Silva</b></td>
+                <td>Avulso</td>
+                <td><span class='pill'>Elite masculino</span></td>
+                <td>06/10/2026</td>
+            </tr>
+            <tr>
+                <td class='num2'>106</td>
+                <td><b>Patrícia Alves</b></td>
+                <td>Seridó Bike Team</td>
+                <td><span class='pill'>Master 35+</span></td>
+                <td>07/10/2026</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+<div class="acoes" style="margin-top:22px;border:0;padding:0"><a class="btn btn-secundario"
+        href="{% url 'prova_lista' %}">← Voltar às
+        provas</a><a class="btn btn-secundario" href="{% url 'prova_form' %}">Editar prova</a></div>
+{% endblock %}

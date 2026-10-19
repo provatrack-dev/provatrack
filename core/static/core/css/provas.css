@@ -1,0 +1,467 @@
+/* provas.css: telas de provas (lista, detalhe e formulário).
+   Vale para provas-lista, provas-detalhe e provas-formulario dos protótipos.
+   Carregado depois do styles.css, então as regras abaixo sobrescrevem o global. */
+
+/* ===== Ajustes sobre o styles.css (no protótipo de provas estas regras são diferentes) ===== */
+main {
+    padding: 40px 24px 56px;
+}
+
+.btn-secundario {
+    background: #fff;
+}
+
+.painel {
+    padding: 30px;
+    max-width: 760px;
+}
+
+.painel h2 {
+    margin: 0 0 20px;
+}
+
+/* ===== Cabeçalho da página e navegação (breadcrumb) ===== */
+.cabeca {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+}
+
+.cabeca h1 {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -.7px;
+    color: var(--principal);
+    margin: 0;
+}
+
+.cabeca p {
+    margin: 4px 0 0;
+    color: var(--suave);
+}
+
+.crumb {
+    font-size: 13px;
+    color: var(--suave);
+    margin-bottom: 10px;
+}
+
+.crumb b {
+    color: var(--principal);
+}
+
+/* ===== Filtros, resumo e chips (lista) ===== */
+.filtros {
+    display: grid;
+    grid-template-columns: 2fr 1fr auto;
+    gap: 12px;
+    background: #fff;
+    border: 1px solid var(--borda);
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 24px;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, .06);
+}
+
+.campo {
+    font-family: inherit;
+    font-size: 15px;
+    padding: 11px 14px;
+    border: 1.5px solid #d5dbe3;
+    border-radius: 9px;
+    background: #fff;
+    color: var(--texto);
+    width: 100%;
+}
+
+.resumo {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.num {
+    background: #fff;
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    padding: 14px 20px;
+    min-width: 150px;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, .06);
+}
+
+.num b {
+    display: block;
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--principal);
+    line-height: 1.1;
+}
+
+.num span {
+    font-size: 13px;
+    color: var(--suave);
+}
+
+/* ===== Cards de prova (lista) ===== */
+.grade {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background: #fff;
+    border: 1px solid var(--borda);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, .06);
+    display: flex;
+    flex-direction: column;
+}
+
+.card .topo {
+    height: 96px;
+    padding: 14px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    color: #fff;
+}
+
+.t-ciclismo {
+    background: linear-gradient(135deg, #0B2545, #1d4f91);
+}
+
+.t-atletismo {
+    background: linear-gradient(135deg, #c2410c, #FF6B35);
+}
+
+.tag {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .6px;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, .2);
+    padding: 4px 10px;
+    border-radius: 20px;
+}
+
+.card .corpo {
+    padding: 18px 18px 8px;
+    flex: 1;
+}
+
+.card h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--principal);
+    letter-spacing: -.2px;
+}
+
+.dado {
+    display: flex;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--suave);
+    margin-bottom: 5px;
+}
+
+.dado b {
+    color: var(--texto);
+    font-weight: 600;
+}
+
+.card .rodape-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 18px 18px;
+}
+
+.status {
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 11px;
+    border-radius: 20px;
+}
+
+.s-aberta {
+    background: #d9f5e3;
+    color: #14703a;
+}
+
+.s-andamento {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.s-encerrada {
+    background: #e5e7eb;
+    color: #4b5563;
+}
+
+.link {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--destaque);
+    text-decoration: none;
+}
+
+/* ===== Formulário ===== */
+.linha {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.linha.um {
+    grid-template-columns: 1fr;
+}
+
+.grupo {
+    margin-bottom: 18px;
+}
+
+.grupo label {
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.grupo small {
+    display: block;
+    margin-top: 5px;
+    font-size: 12px;
+    color: var(--suave);
+}
+
+.erro {
+    border-color: #dc2626 !important;
+    background: #fef2f2;
+}
+
+.msg-erro {
+    color: #dc2626;
+    font-size: 12px;
+    margin-top: 5px;
+    font-weight: 500;
+}
+
+.acoes {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+    padding-top: 22px;
+    border-top: 1px solid var(--borda);
+}
+
+/* ===== Chips de modalidade (lista) ===== */
+.chips {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+}
+
+.chip {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 9px 18px;
+    border-radius: 999px;
+    background: #fff;
+    border: 1.5px solid #d5dbe3;
+    color: var(--principal);
+}
+
+.chip.ativo {
+    background: var(--principal);
+    border-color: var(--principal);
+    color: #fff;
+    box-shadow: 0 3px 10px rgba(11, 37, 69, .25);
+}
+
+/* ===== Detalhe da prova ===== */
+.hero {
+    border-radius: 16px;
+    padding: 28px 30px;
+    color: #fff;
+    margin-bottom: 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.hero h1 {
+    color: #fff;
+    margin: 10px 0 0;
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -.7px;
+}
+
+.hero .status {
+    background: rgba(255, 255, 255, .95);
+}
+
+.info4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+.info {
+    background: #fff;
+    border: 1px solid var(--borda);
+    border-radius: 14px;
+    padding: 18px 20px;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, .06);
+}
+
+.info span {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .8px;
+    text-transform: uppercase;
+    color: var(--suave);
+    margin-bottom: 6px;
+}
+
+.info b {
+    font-size: 18px;
+    color: var(--principal);
+    font-weight: 700;
+}
+
+.tabela-wrap {
+    background: #fff;
+    border: 1px solid var(--borda);
+    border-radius: 14px;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, .06);
+    overflow: hidden;
+}
+
+.tabela-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 22px;
+    border-bottom: 1px solid var(--borda);
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.tabela-topo h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--principal);
+}
+
+.tabela-topo h2 small {
+    font-weight: 500;
+    color: var(--suave);
+    font-size: 14px;
+    margin-left: 6px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    text-align: left;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .8px;
+    text-transform: uppercase;
+    color: var(--suave);
+    padding: 12px 22px;
+    background: #f8fafc;
+}
+
+td {
+    padding: 14px 22px;
+    border-top: 1px solid var(--borda);
+    font-size: 15px;
+}
+
+td.num2 {
+    font-weight: 700;
+    color: var(--destaque);
+}
+
+.pill {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: #eef2f7;
+    color: var(--principal);
+}
+
+.desc {
+    background: #fff;
+    border: 1px solid var(--borda);
+    border-radius: 14px;
+    padding: 22px 24px;
+    margin-bottom: 22px;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, .06);
+    color: var(--suave);
+}
+
+.desc h2 {
+    margin: 0 0 8px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--suave);
+}
+
+.desc p {
+    margin: 0;
+    color: var(--texto);
+}
+
+@media (max-width:860px) {
+    .grade {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .info4 {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .filtros {
+        grid-template-columns: 1fr;
+    }
+
+    .linha {
+        grid-template-columns: 1fr;
+    }
+
+    .menu {
+        display: none;
+    }
+
+    .rodape-topo {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width:560px) {
+    .grade {
+        grid-template-columns: 1fr;
+    }
+}
