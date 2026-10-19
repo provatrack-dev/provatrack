@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Nova prova{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'core/css/provas.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="crumb">Início › Provas › <b>Nova prova</b></div>
+<div class="cabeca">
+    <div>
+        <h1>Nova prova</h1>
+        <p>Preencha os dados para cadastrar uma prova.</p>
+    </div>
+</div>
+<form method="post">
+    {% csrf_token %}
+    <section class="painel">
+        <h2>Dados da prova</h2>
+        <div class="linha um">
+            <div class="grupo"><label>Nome da prova</label><input class="campo" value="Volta Ciclística do Seridó">
+            </div>
+        </div>
+        <div class="linha">
+            <div class="grupo"><label>Modalidade</label><select class="campo">
+                    <option>Ciclismo</option>
+                </select></div>
+            <div class="grupo"><label>Data</label><input class="campo" value="15/11/2026"></div>
+        </div>
+        <div class="linha">
+            <div class="grupo"><label>Local</label><input class="campo" value="Caicó, RN"></div>
+            <div class="grupo"><label>Distância (km)</label><input class="campo erro" value="">
+                <div class="msg-erro">Informe a distância da prova.</div>
+            </div>
+        </div>
+        <div class="linha um">
+            <div class="grupo"><label>Status</label><select class="campo">
+                    <option>Inscrições abertas</option>
+                </select><small>Provas encerradas aparecem com o resultado final.</small></div>
+        </div>
+        <div class="acoes"><button class="btn btn-primario">Salvar prova</button><a class="btn btn-secundario"
+                href="{% url 'prova_lista' %}">Cancelar</a></div>
+    </section>
+</form>
+{% endblock %}
