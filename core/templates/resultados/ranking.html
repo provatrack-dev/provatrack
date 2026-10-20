@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Ranking geral{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'core/css/resultados.css' %}">
+{% endblock %}
+
+{% block content %}
+        <div class="topo">
+            <div>
+                <h1>Ranking geral</h1>
+                <p class="sub">Classificação dos atletas pela soma de pontos de todas as provas encerradas.</p>
+            </div>
+            <div class="chips"><span class="chip on">Geral</span><span class="chip">Ciclismo</span><span class="chip">Atletismo</span></div>
+        </div>
+        <div class="tabs"><a href="{% url 'resultado_lista' %}">Resultados por prova</a><a href="{% url 'ranking_geral' %}" class="on">Ranking geral</a></div>
+        <section class="podio">
+            {% for p in podio %}
+            <div class="pc {{ p.classe }}"><div class="medalha" style="background:{{ p.cor }}">{{ p.item.pos }}</div><div class="nome">{{ p.item.nome }}</div><div class="eq">{{ p.item.equipe }}</div><div class="pt">{{ p.item.pontos }} <small>pts</small></div></div>
+            {% endfor %}
+        </section>
+        <section class="painel">
+            <table>
+                <thead><tr><th>Pos.</th><th>Atleta</th><th>Equipe</th><th>Modalidade</th><th>Provas</th><th>Pontos</th></tr></thead>
+                <tbody>
+                    {% for r in ranking %}
+                    <tr{% if r.pos <= 3 %} class="top"{% endif %}>
+                        <td><div class="pos{% if r.pos <= 3 %} p{{ r.pos }}{% endif %}">{{ r.pos }}</div></td>
+                        <td><div class="pessoa"><div class="av">{{ r.iniciais }}</div><b>{{ r.nome }}</b></div></td>
+                        <td>{% if r.equipe %}{{ r.equipe }}{% else %}<span class="tag avulso">Avulso</span>{% endif %}</td>
+                        <td><span class="tag {{ r.modalidade }}">{{ r.modalidade_nome }}</span></td>
+                        <td>{{ r.provas }}</td>
+                        <td><div class="celpts"><div class="barra-pts"><i style="width:{{ r.barra }}%"></i></div><b class="pts">{{ r.pontos }}</b></div></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="rodape-tab"><span>Mostrando {{ ranking|length }} de {{ total_atletas }} atletas</span><div class="pag"><span class="on">1</span><span>2</span><span>3</span><span>›</span></div></div>
+        </section>
+{% endblock %}
