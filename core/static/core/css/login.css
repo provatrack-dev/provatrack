@@ -1,0 +1,122 @@
+/* ===== Tela de login =====
+   Origem: docs/prototipos/login.html (só o que é próprio da tela). */
+
+/* No protótipo o <main> tem a classe login-main; aqui o <main> vem do base.html,
+   então a mesma regra é aplicada ao main que contém o login. */
+main:has(.login-box) {
+  display: grid;
+  place-items: center;
+  padding: 64px 24px;
+}
+
+.login-box {
+  width: 100%;
+  max-width: 440px;
+}
+
+.login-topo {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.login-topo .marca-icone {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  margin: 0 auto 16px;
+}
+
+.login-topo .marca-icone svg {
+  width: 30px;
+  height: 30px;
+}
+
+.login-topo h1 {
+  font-size: 30px;
+}
+
+.login-topo p {
+  color: var(--suave);
+  margin: 0;
+  font-size: 15px;
+}
+
+.painel.login {
+  padding: 32px;
+}
+
+.campo {
+  margin-bottom: 18px;
+}
+
+.campo label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.campo input {
+  width: 100%;
+  font-family: inherit;
+  font-size: 15px;
+  padding: 12px 14px;
+  border: 1.5px solid var(--borda);
+  border-radius: 9px;
+  background: #fff;
+  color: var(--texto);
+}
+
+.campo input::placeholder {
+  color: #98a2b3;
+}
+
+.campo input:focus {
+  outline: none;
+  border-color: var(--destaque);
+  box-shadow: 0 0 0 3px rgba(255,107,53,.18);
+}
+
+.linha {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: -4px 0 22px;
+  font-size: 14px;
+}
+
+.linha label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--suave);
+}
+
+.linha input {
+  accent-color: var(--destaque);
+  width: 16px;
+  height: 16px;
+}
+
+.linha a {
+  color: var(--destaque);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.btn-cheio {
+  width: 100%;
+  padding: 13px 22px;
+}
+
+.cadastro {
+  text-align: center;
+  margin: 20px 0 0;
+  font-size: 14px;
+  color: var(--suave);
+}
+
+.cadastro a {
+  color: var(--principal);
+  font-weight: 600;
+}

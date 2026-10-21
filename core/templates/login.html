@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Login{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'core/css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="login-box">
+    <div class="login-topo">
+        <span class="marca-icone"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-6 4 3 5-8 4 5"/><path d="M3 21h18"/></svg></span>
+        <h1>Entrar no ProvaTrack</h1>
+        <p>Acesse para gerenciar provas, atletas e resultados.</p>
+    </div>
+    <form class="painel login" method="post">
+        {% csrf_token %}
+        <div class="campo">
+            <label for="usuario">Usuário</label>
+            <input id="usuario" name="usuario" type="text" placeholder="Digite seu usuário">
+        </div>
+        <div class="campo">
+            <label for="senha">Senha</label>
+            <input id="senha" name="senha" type="password" placeholder="Digite sua senha">
+        </div>
+        <div class="linha">
+            <label><input type="checkbox" name="lembrar"> Lembrar de mim</label>
+            <a href="#">Esqueci minha senha</a>
+        </div>
+        <button class="btn btn-primario btn-cheio" type="submit">Entrar</button>
+    </form>
+    <p class="cadastro">Ainda não tem conta? <a href="#">Fale com o administrador</a></p>
+</div>
+{% endblock %}
