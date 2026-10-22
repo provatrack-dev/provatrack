@@ -6,5 +6,5 @@ def home(request):
 
 
 def login_view(request):
-    # Provisória: o Vitor troca por login.html na issue da tela de login
-    return render(request, 'em_construcao.html', {'titulo': 'Entrar'})
+    # Por enquanto só mostra o formulário; autenticar de verdade fica para os próximos itens.
+    return render(request, 'login.html')
