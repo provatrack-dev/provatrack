@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Novo atleta{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'core/css/cadastros.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="form-box">
+    <div class="crumb"><a href="{% url 'atleta_lista' %}">Atletas</a> › <b>Novo atleta</b></div>
+    <h1>Novo atleta</h1>
+    <p class="sub">Preencha os dados do atleta. A equipe é opcional: atleta sem equipe fica como avulso.</p>
+    <form class="painel" method="post">
+        {% csrf_token %}
+        <div class="grid2">
+            <div class="campo cheio"><label for="nome">Nome <i>*</i></label><input id="nome" name="nome" type="text" placeholder="Nome completo do atleta"></div>
+            <div class="campo"><label for="nascimento">Data de nascimento</label><input id="nascimento" name="nascimento" type="text" placeholder="dd/mm/aaaa"></div>
+            <div class="campo"><label for="sexo">Sexo</label><select id="sexo" name="sexo"><option>Selecione</option><option>Masculino</option><option>Feminino</option></select></div>
+            <div class="campo"><label for="cidade">Cidade</label><input id="cidade" name="cidade" type="text" placeholder="Ex.: Pau dos Ferros"></div>
+            <div class="campo"><label for="modalidade">Modalidade</label><select id="modalidade" name="modalidade"><option>Selecione</option><option>Ciclismo</option><option>Atletismo</option></select></div>
+            <div class="campo cheio">
+                <label for="equipe">Equipe <span>(opcional)</span></label>
+                <select id="equipe" name="equipe">
+                    <option>Sem equipe (atleta avulso)</option>
+                    {% for equipe in equipes %}<option>{{ equipe }}</option>{% endfor %}
+                </select>
+                <small>As equipes vêm do cadastro de Equipes.</small>
+            </div>
+        </div>
+        <div class="botoes">
+            <button class="btn btn-primario" type="submit">Salvar atleta</button>
+            <a class="btn btn-secundario" href="{% url 'atleta_lista' %}">Cancelar</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

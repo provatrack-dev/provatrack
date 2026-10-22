@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Atletas{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'core/css/cadastros.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="topo">
+    <div>
+        <h1>Atletas</h1>
+        <p class="sub">Cadastro de atletas de ciclismo e atletismo, com ou sem equipe.</p>
+    </div>
+    <a class="btn btn-primario" href="{% url 'atleta_form' %}">+ Novo atleta</a>
+</div>
+<section class="painel">
+    <div class="barra">
+        <input type="text" placeholder="Buscar atleta por nome">
+        <select>
+            <option>Todas as modalidades</option>
+            <option>Ciclismo</option>
+            <option>Atletismo</option>
+        </select>
+        <select>
+            <option>Todas as equipes</option>
+            {% for equipe in equipes %}<option>{{ equipe }}</option>{% endfor %}
+        </select>
+    </div>
+    <table>
+        <thead>
+            <tr><th>Atleta</th><th>Modalidade</th><th>Cidade</th><th>Equipe</th><th>Ações</th></tr>
+        </thead>
+        <tbody>
+            {% for atleta in atletas %}
+            <tr>
+                <td><div class="pessoa"><div class="av">{{ atleta.iniciais }}</div><div><b>{{ atleta.nome }}</b><small>{{ atleta.sexo }} · {{ atleta.nascimento }}</small></div></div></td>
+                <td><span class="tag {% if atleta.modalidade == 'ciclismo' %}cic{% else %}atl{% endif %}">{{ atleta.modalidade_nome }}</span></td>
+                <td>{{ atleta.cidade }}</td>
+                <td>{% if atleta.equipe %}{{ atleta.equipe }}{% else %}<span class="tag avulso">Avulso</span>{% endif %}</td>
+                <td><div class="acoes-linha"><a class="mini" href="{% url 'atleta_form' %}">Editar</a><a class="mini perigo" href="#">Excluir</a></div></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="rodape-tab"><span>Mostrando {{ mostrando }} de {{ total }} atletas</span><div class="pag"><span class="on">1</span><span>2</span><span>3</span><span>›</span></div></div>
+</section>
+{% endblock %}
