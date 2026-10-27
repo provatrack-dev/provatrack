@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Nova equipe{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'core/css/cadastros.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="form-box">
+    <div class="crumb"><a href="{% url 'equipe_lista' %}">Equipes</a> › <b>Nova equipe</b></div>
+    <h1>Nova equipe</h1>
+    <p class="sub">Cadastre a equipe e escolha em qual modalidade ela compete.</p>
+    <form class="painel" method="post">
+        {% csrf_token %}
+        <div class="grid2">
+            <div class="campo cheio"><label for="nome">Nome <i>*</i></label><input id="nome" name="nome" type="text" placeholder="Nome da equipe"></div>
+            <div class="campo"><label for="sigla">Sigla</label><input id="sigla" name="sigla" type="text" placeholder="Ex.: SPE"><small>Até 10 caracteres.</small></div>
+            <div class="campo"><label for="modalidade">Modalidade</label><select id="modalidade" name="modalidade"><option>Selecione</option><option>Ciclismo</option><option>Atletismo</option><option>Ambas</option></select></div>
+            <div class="campo"><label for="cidade">Cidade</label><input id="cidade" name="cidade" type="text" placeholder="Ex.: Pau dos Ferros"></div>
+            <div class="campo"><label for="uf">UF</label><input id="uf" name="uf" type="text" placeholder="RN" maxlength="2"></div>
+        </div>
+        <div class="botoes">
+            <button class="btn btn-primario" type="submit">Salvar equipe</button>
+            <a class="btn btn-secundario" href="{% url 'equipe_lista' %}">Cancelar</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

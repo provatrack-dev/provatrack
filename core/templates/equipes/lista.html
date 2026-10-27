@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Equipes{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'core/css/cadastros.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="topo">
+    <div>
+        <h1>Equipes</h1>
+        <p class="sub">Equipes de ciclismo, atletismo ou ambas, com a quantidade de atletas de cada uma.</p>
+    </div>
+    <a class="btn btn-primario" href="{% url 'equipe_form' %}">+ Nova equipe</a>
+</div>
+<section class="painel">
+    <div class="barra">
+        <input type="text" placeholder="Buscar equipe por nome ou sigla">
+        <select>
+            <option>Todas as modalidades</option>
+            <option>Ciclismo</option>
+            <option>Atletismo</option>
+            <option>Ambas</option>
+        </select>
+    </div>
+    <table>
+        <thead>
+            <tr><th>Equipe</th><th>Sigla</th><th>Cidade</th><th>Modalidade</th><th>Atletas</th><th>Ações</th></tr>
+        </thead>
+        <tbody>
+            {% for equipe in equipes %}
+            <tr>
+                <td><b style="color:var(--principal);font-weight:600">{{ equipe.nome }}</b></td>
+                <td><span class="sigla">{{ equipe.sigla }}</span></td>
+                <td>{{ equipe.cidade }}</td>
+                <td><span class="tag {% if equipe.modalidade == 'ciclismo' %}cic{% elif equipe.modalidade == 'atletismo' %}atl{% else %}amb{% endif %}">{{ equipe.modalidade_nome }}</span></td>
+                <td>{{ equipe.atletas }}</td>
+                <td><div class="acoes-linha"><a class="mini" href="{% url 'equipe_form' %}">Editar</a><a class="mini perigo" href="#">Excluir</a></div></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="rodape-tab"><span>Mostrando {{ mostrando }} de {{ total }} equipes</span><div class="pag"><span class="on">1</span><span>2</span><span>›</span></div></div>
+</section>
+{% endblock %}
