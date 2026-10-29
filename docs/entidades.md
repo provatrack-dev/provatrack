@@ -57,20 +57,6 @@ Regra: um atleta só pode ter um resultado por prova.
 - **Resultado pertence a Prova** (N para 1): uma prova gera vários resultados, um por atleta participante.
 - **Atleta e Prova** (N para N): a tabela Resultado faz essa ligação e guarda posição, tempo e pontos.
 
-## Diagrama
-
-```mermaid
-erDiagram
-    EQUIPE ||--o{ ATLETA : "tem"
-    ATLETA ||--o{ RESULTADO : "possui"
-    PROVA  ||--o{ RESULTADO : "gera"
-
-    EQUIPE { string nome string sigla string cidade string uf string modalidade }
-    ATLETA { string nome date data_nascimento string sexo string cidade string modalidade }
-        PROVA { string nome string modalidade date data string local decimal distancia_km string status text descricao }
-    RESULTADO { int posicao duration tempo int pontos }
-```
-
 ## Observação sobre o login
 
 O login (tela da issue #3) usará o sistema de usuários que o Django já traz pronto, sem entidade extra.
