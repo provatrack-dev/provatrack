@@ -50,3 +50,47 @@ class Atleta(models.Model):
 
     def __str__(self):
         return self.nome
+
+        
+
+class Prova(models.Model):
+    class Modalidade(models.TextChoices):
+        CICLISMO = 'ciclismo', 'Ciclismo'
+        ATLETISMO = 'atletismo', 'Atletismo'
+
+    class Status(models.TextChoices):
+        ABERTA = 'aberta', 'Aberta'
+        ANDAMENTO = 'andamento', 'Em andamento'
+        ENCERRADA = 'encerrada', 'Encerrada'
+
+    nome = models.CharField(max_length=150)
+    modalidade = models.CharField(max_length=10, choices=Modalidade.choices)
+    data = models.DateField()
+    local = models.CharField(max_length=150)
+    distancia_km = models.DecimalField('distância (km)', max_digits=6, decimal_places=2)
+    status = models.CharField(max_length=10, choices=Status.choices, default=Status.ABERTA)
+    descricao = models.TextField('descrição', blank=True)
+
+    class Meta:
+        ordering = ['-data']
+
+    def __str__(self):
+        return self.nome
+
+
+class Resultado(models.Model):
+    atleta = models.ForeignKey(Atleta, on_delete=models.CASCADE, related_name='resultados')
+    prova = models.ForeignKey(Prova, on_delete=models.CASCADE, related_name='resultados')
+    posicao = models.PositiveIntegerField('posição')
+    tempo = models.DurationField()
+    pontos = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ['prova', 'posicao']
+        constraints = [
+            # Um atleta só pode ter um resultado por prova.
+            models.UniqueConstraint(fields=['atleta', 'prova'], name='resultado_unico_por_atleta_e_prova'),
+        ]
+
+    def __str__(self):
+        return f'{self.atleta} em {self.prova}: {self.posicao}º lugar'

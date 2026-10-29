@@ -36,6 +36,7 @@ Equipe, Atleta, Prova e Resultado.
 | local | Texto (150) | |
 | distancia_km | Decimal | Ex.: 42.2 |
 | status | Escolha | Aberta, Em andamento ou Encerrada |
+| descricao | Texto longo | Opcional. Resumo da prova (percurso, categorias) |
 
 ## 4. Resultado
 
@@ -66,7 +67,7 @@ erDiagram
 
     EQUIPE { string nome string sigla string cidade string uf string modalidade }
     ATLETA { string nome date data_nascimento string sexo string cidade string modalidade }
-    PROVA { string nome string modalidade date data string local decimal distancia_km string status }
+        PROVA { string nome string modalidade date data string local decimal distancia_km string status text descricao }
     RESULTADO { int posicao duration tempo int pontos }
 ```
 
