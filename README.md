@@ -1,109 +1,62 @@
 # ProvaTrack
 
-Sistema web para gerenciamento de provas de ciclismo e atletismo: atletas, equipes, provas e resultados em um só lugar.
+Sistema web para gerenciar provas de ciclismo e atletismo: atletas, equipes, provas, resultados e ranking geral.
 
 Projeto da disciplina de Desenvolvimento de Sistemas Web, IFRN, Campus Pau dos Ferros.
 
-## Ideia do projeto
+## Sobre o sistema
 
-Organizar uma prova esportiva costuma envolver planilhas e mensagens soltas: quem está inscrito, de qual equipe, quanto tempo fez e quem ganhou. O ProvaTrack centraliza essas informações em um único sistema, para cadastrar atletas e equipes, criar provas, registrar os resultados e consultar o ranking geral.
+Organizar uma prova esportiva costuma envolver planilhas e mensagens soltas: quem participa, de qual equipe, quanto tempo fez e quem ganhou. O ProvaTrack reúne tudo em um só lugar: cadastro de atletas e equipes, criação de provas, lançamento de resultados e consulta do ranking geral.
 
-## Escopo
+## Documentação
 
-**O sistema faz:**
-- Cadastro, listagem, edição e exclusão de atletas
-- Cadastro, listagem, edição e exclusão de equipes
-- Cadastro e listagem de provas, com filtro por modalidade e página de detalhes
-- Registro de resultados por prova (posição, tempo e pontos)
-- Ranking geral dos atletas por pontos
-- Login de usuários
+Requisitos, casos de uso, entidades, protótipos e organização do projeto estão no **[Wiki](https://github.com/provatrack-dev/provatrack/wiki)**.
 
-**O sistema não faz (fora do escopo):**
-- Inscrição online de atletas pelo público
-- Pagamentos e taxas de inscrição
-- Cronometragem em tempo real
-
-## Entidades
-
-| Entidade | Descrição | Principais campos |
-|---|---|---|
-| Equipe | Grupo ao qual os atletas pertencem | nome, sigla, cidade, uf, modalidade |
-| Atleta | Participante das provas | nome, data de nascimento, sexo, cidade, modalidade, equipe |
-| Prova | Competição de ciclismo ou atletismo | nome, modalidade, data, local, distância, status |
-| Resultado | Desempenho de um atleta em uma prova | atleta, prova, posição, tempo, pontos |
-
-Relacionamentos: uma equipe tem vários atletas, e um atleta tem vários resultados. Uma prova gera vários resultados, um por atleta. Detalhes e diagrama em [docs/entidades.md](docs/entidades.md).
-
-## Protótipos
-
-Telas prototipadas do sistema, todas no mesmo layout base (paleta, fonte Inter, navbar e rodapé, descritos em [docs/layout-base.md](docs/layout-base.md)). As imagens e o código HTML de cada tela ficam em [docs/prototipos/](docs/prototipos/).
-
-### Layout base
-
-![Navbar e rodapé](docs/prototipos/navbar-rodape.png)
-
-Código: [navbar-rodape.html](docs/prototipos/navbar-rodape.html)
-
-### Login e início
-
-![Login](docs/prototipos/login.png)
-
-![Início](docs/prototipos/home.png)
-
-Código: [login.html](docs/prototipos/login.html) · [home.html](docs/prototipos/home.html)
-
-### Atletas e equipes
-
-![Lista de atletas](docs/prototipos/atletas-lista.png)
-
-![Cadastro de atleta](docs/prototipos/atletas-formulario.png)
-
-![Lista de equipes](docs/prototipos/equipes-lista.png)
-
-![Cadastro de equipe](docs/prototipos/equipes-formulario.png)
-
-Código: [atletas-lista.html](docs/prototipos/atletas-lista.html) · [atletas-formulario.html](docs/prototipos/atletas-formulario.html) · [equipes-lista.html](docs/prototipos/equipes-lista.html) · [equipes-formulario.html](docs/prototipos/equipes-formulario.html)
-
-### Provas
-
-![Lista de provas](docs/prototipos/provas-lista.png)
-
-![Detalhe da prova](docs/prototipos/provas-detalhe.png)
-
-![Cadastro de prova](docs/prototipos/provas-formulario.png)
-
-Código: [provas-lista.html](docs/prototipos/provas-lista.html) · [provas-detalhe.html](docs/prototipos/provas-detalhe.html) · [provas-formulario.html](docs/prototipos/provas-formulario.html)
-
-### Resultados e ranking
-
-![Resultados por prova](docs/prototipos/resultados-lista.png)
-
-![Ranking geral](docs/prototipos/ranking-geral.png)
-
-![Lançar resultado](docs/prototipos/resultados-formulario.png)
-
-Código: [resultados-lista.html](docs/prototipos/resultados-lista.html) · [ranking-geral.html](docs/prototipos/ranking-geral.html) · [resultados-formulario.html](docs/prototipos/resultados-formulario.html)
+- [Documento de requisitos](docs/requisitos.md)
+- [Diagrama de casos de uso](docs/casos-de-uso.md)
 
 ## Tecnologias
 
-- Python e Django
-- HTML e CSS
-- Git e GitHub (issues, board, pull requests)
-
-## Equipe
-
-- Samuel Oliveira
-- Victor Gabriel 
+Python 3.12 ou mais recente, Django, SQLite, HTML e CSS.
 
 ## Como executar
 
-```bash
-git clone https://github.com/provatrack-dev/provatrack.git
-cd provatrack
-python -m venv venv
-venv\Scripts\activate
-pip install -r requirements.txt
-python manage.py runserver
-```
+Você precisa ter o Python (3.12 ou mais recente) e o Git instalados.
 
-Depois acesse http://127.0.0.1:8000/
+1. Baixe o projeto e entre na pasta:
+   ```bash
+   git clone https://github.com/provatrack-dev/provatrack.git
+   cd provatrack
+   ```
+2. Crie e ative o ambiente virtual:
+   ```bash
+   python -m venv venv
+   venv\Scripts\activate          # Windows
+   source venv/bin/activate       # Linux ou macOS
+   ```
+3. Instale as dependências:
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. Crie o banco de dados (SQLite):
+   ```bash
+   python manage.py migrate
+   ```
+5. Crie um usuário para entrar no sistema e no Django Admin:
+   ```bash
+   python manage.py createsuperuser
+   ```
+6. Inicie o servidor:
+   ```bash
+   python manage.py runserver
+   ```
+
+Depois acesse:
+
+- Sistema: http://127.0.0.1:8000/
+- Django Admin (cadastro dos dados): http://127.0.0.1:8000/admin/
+
+## Equipe
+
+- Samuel ([SamuelFCD](https://github.com/SamuelFCD))
+- Vitor ([gabrieldntss](https://github.com/gabrieldntss))
