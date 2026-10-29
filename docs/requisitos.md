@@ -1,5 +1,3 @@
-Código-fonte deste documento versionado em [`docs/requisitos.md`](https://github.com/provatrack-dev/provatrack/blob/main/docs/requisitos.md).
-
 # Documento de requisitos do ProvaTrack
 
 Estrutura baseada no documento de requisitos e no documento de visão vistos na disciplina de Engenharia de Software (Prof. Ciro Moura).
@@ -25,8 +23,8 @@ O ProvaTrack é um sistema web para gerenciar provas de ciclismo e atletismo: eq
 
 ### 1.4 Referências
 - Proposta de Projeto de Desenvolvimento de Sistemas Web (IFRN)
-- [[Entidades]] · [[Layout base]] · [[Protótipos|Prototipos]]
-- [[Casos de uso]]
+- [Entidades e campos](entidades.md) · [Layout base](layout-base.md) · [Protótipos](prototipos/)
+- [Casos de uso](casos-de-uso.md)
 
 ## 2. Posicionamento
 
@@ -68,7 +66,7 @@ Prioridade: **Alta** = essencial para o sistema funcionar; **Média** = importan
 | RN01 | Um atleta só pode ter **um** resultado por prova. |
 | RN02 | O atleta pode não ter equipe (atleta avulso). |
 | RN03 | Ao excluir uma equipe, os atletas dela continuam cadastrados, como avulsos. |
-| RN04 | Atleta ou prova que já tenha resultado lançado não pode ser excluído. |
+| RN04 | ao excluir um atleta ou uma prova, os resultados ligados a ele também são excluídos, com confirmação antes. |
 | RN05 | O ranking geral ordena os atletas pela soma de pontos, do maior para o menor. |
 | RN06 | Só o Organizador logado pode cadastrar, editar ou excluir dados. As contas são criadas pelo administrador no Django Admin (não há cadastro pelo público). |
 

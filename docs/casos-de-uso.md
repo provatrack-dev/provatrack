@@ -1,14 +1,12 @@
-Código-fonte deste documento versionado em [`docs/casos-de-uso.md`](https://github.com/provatrack-dev/provatrack/blob/main/docs/casos-de-uso.md).
-
 # Casos de uso do ProvaTrack
 
-Os casos de uso mostram o que o sistema oferece a cada tipo de usuário, sem detalhar como é feito por dentro. Cada caso de uso atende a requisitos do [[Requisitos]].
+Os casos de uso mostram o que o sistema oferece a cada tipo de usuário, sem detalhar como é feito por dentro. Cada caso de uso atende a requisitos do [documento de requisitos](requisitos.md).
 
 ## 1. Diagrama
 
 O retângulo é a fronteira do sistema (ProvaTrack). Os atores ficam fora dele.
 
-![Diagrama de casos de uso do ProvaTrack](images/casos-de-uso.png)
+![Diagrama de casos de uso do ProvaTrack](casos-de-uso.png)
 
 **Como ler:**
 - **Organizador herda de Visitante** (seta com triângulo vazado): ele faz tudo que o Visitante faz e mais o cadastro de dados.
@@ -39,3 +37,5 @@ O retângulo é a fronteira do sistema (ProvaTrack). Os atores ficam fora dele.
 | UC10 | Manter provas | Organizador | RF04, RF12 |
 | UC11 | Manter resultados | Organizador | RF05, RF12, RN01, RN04 |
 | UC12 | Filtrar provas (opcional ao consultar provas) | Visitante | RF08 |
+
+
