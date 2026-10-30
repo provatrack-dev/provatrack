@@ -46,10 +46,19 @@ Você precisa ter o Python (3.12 ou mais recente) e o Git instalados.
    ```bash
    python manage.py createsuperuser
    ```
-6. Inicie o servidor:
-   ```bash
-   python manage.py runserver
-   ```
+6. Carregue os dados de exemplo (equipes, atletas, provas e resultados dos protótipos):
+
+```
+python manage.py carregar_dados
+```
+
+O comando cadastra 5 equipes, 11 atletas, 6 provas e 8 resultados (os da Corrida Rústica do IFRN) e pode ser rodado mais de uma vez sem duplicar os dados. O passo é opcional, mas ajuda a testar as telas e o Django Admin.
+
+7. Inicie o servidor:
+
+```
+python manage.py runserver
+```
 
 Depois acesse:
 
