@@ -17,15 +17,15 @@
 </div>
 <section class="painel">
     <div class="barra">
-        <input type="text" placeholder="Buscar atleta por nome">
-        <select>
-            <option>Todas as modalidades</option>
-            <option>Ciclismo</option>
-            <option>Atletismo</option>
+        <input type="text" id="busca-atleta" placeholder="Buscar atleta por nome">
+        <select id="filtro-modalidade">
+            <option value="">Todas as modalidades</option>
+            <option value="ciclismo">Ciclismo</option>
+            <option value="atletismo">Atletismo</option>
         </select>
-        <select>
-            <option>Todas as equipes</option>
-            {% for equipe in equipes %}<option>{{ equipe }}</option>{% endfor %}
+        <select id="filtro-equipe">
+            <option value="">Todas as equipes</option>
+            {% for equipe in equipes %}<option value="{{ equipe }}">{{ equipe }}</option>{% endfor %}
         </select>
     </div>
     <table>
@@ -34,7 +34,7 @@
         </thead>
         <tbody>
             {% for atleta in atletas %}
-            <tr>
+            <tr data-nome="{{ atleta.nome }}" data-modalidade="{{ atleta.modalidade }}" data-equipe="{{ atleta.equipe|default:'' }}">
                 <td><div class="pessoa"><div class="av">{{ atleta.iniciais }}</div><div><b>{{ atleta.nome }}</b><small>{{ atleta.sexo }} · {{ atleta.nascimento }}</small></div></div></td>
                 <td><span class="tag {% if atleta.modalidade == 'ciclismo' %}cic{% else %}atl{% endif %}">{{ atleta.modalidade_nome }}</span></td>
                 <td>{{ atleta.cidade }}</td>
