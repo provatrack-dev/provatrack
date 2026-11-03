@@ -17,7 +17,7 @@ Requisitos, casos de uso, entidades, protótipos e organização do projeto est�
 
 ## Tecnologias
 
-Python 3.12 ou mais recente, Django, SQLite, HTML e CSS.
+Python 3.12 ou mais recente, Django, SQLite, HTML e CSS e JavaScript.
 
 ## Como executar
 

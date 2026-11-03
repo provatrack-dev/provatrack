@@ -17,12 +17,12 @@
 </div>
 <section class="painel">
     <div class="barra">
-        <input type="text" placeholder="Buscar equipe por nome ou sigla">
-        <select>
-            <option>Todas as modalidades</option>
-            <option>Ciclismo</option>
-            <option>Atletismo</option>
-            <option>Ambas</option>
+        <input type="text" id="busca-equipe" placeholder="Buscar equipe por nome ou sigla">
+        <select id="filtro-modalidade-equipe">
+            <option value="">Todas as modalidades</option>
+            <option value="ciclismo">Ciclismo</option>
+            <option value="atletismo">Atletismo</option>
+            <option value="ambas">Ambas</option>
         </select>
     </div>
     <table>
@@ -31,7 +31,7 @@
         </thead>
         <tbody>
             {% for equipe in equipes %}
-            <tr>
+            <tr data-nome="{{ equipe.nome }}" data-sigla="{{ equipe.sigla }}" data-modalidade="{{ equipe.modalidade }}">
                 <td><b style="color:var(--principal);font-weight:600">{{ equipe.nome }}</b></td>
                 <td><span class="sigla">{{ equipe.sigla }}</span></td>
                 <td>{{ equipe.cidade }}</td>

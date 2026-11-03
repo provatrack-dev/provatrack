@@ -23,16 +23,16 @@
 </div>
 
 <div class="chips">
-    <span class="chip ativo">Todas ({{ total }})</span>
-    <span class="chip">🚴 Ciclismo ({{ ciclismo }})</span>
-    <span class="chip">🏃 Atletismo ({{ atletismo }})</span>
+    <span class="chip ativo" data-modalidade="">Todas ({{ total }})</span>
+    <span class="chip" data-modalidade="ciclismo">🚴 Ciclismo ({{ ciclismo }})</span>
+    <span class="chip" data-modalidade="atletismo">🏃 Atletismo ({{ atletismo }})</span>
 </div>
-<div class="filtros"><input class="campo" placeholder="🔍  Buscar prova pelo nome"><select class="campo">
+<div class="filtros"><input class="campo" id="busca-prova" placeholder=" Buscar prova pelo nome"><select class="campo">
         <option>Todos os status</option>
     </select><button class="btn btn-secundario">Filtrar</button></div>
 <section class="grade">
     {% for prova in provas %}
-    <article class="card">
+    <article class="card" data-modalidade="{{ prova.modalidade }}" data-nome="{{ prova.nome }}">
         <div class="topo t-{{ prova.modalidade }}"><span class="tag">{{ prova.modalidade_nome }}</span></div>
         <div class="corpo">
             <h3>{{ prova.nome }}</h3>
